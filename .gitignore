@@ -1,0 +1,42 @@
+# ── Archives & backups (NOT needed for the website) ─────────────────
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bak
+*.old
+*.tmp
+*.temp
+
+# ── Editor / temporary files ─────────────────────────────────────────
+*~
+*.swp
+*.swo
+*.log
+.idea/
+.vscode/
+*.code-workspace
+
+# ── OS junk files ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Raw design sources (large; only exported images go on the site) ──
+*.psd
+*.ai
+*.fig
+*.sketch
+
+# ── Local tooling & secrets ──────────────────────────────────────────
+node_modules/
+.env
+.env.*
+__pycache__/
+*.pyc
+
+# NOTE: .png / .jpg / .webp screenshots are NOT ignored on purpose —
+# they will be used in the Hero section and the "How to Use" guide.
