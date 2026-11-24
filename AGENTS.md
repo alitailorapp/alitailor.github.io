@@ -72,18 +72,43 @@
 
 ---
 
-## ڈیزائن رہنمائی (Design Guidelines)
+## ڈیزائن رہنمائی (Design Guidelines) — ✅ منظور شدہ (24 نومبر 2026)
 
-### رنگ سکیم (Color Palette)
+### تھیم: "Calm & Cozy" + Claymorphism
+- **یہی تھیم حتمی ہے — اِسی پر عمل کریں، کوئی اور رنگ/اسٹائل نہیں بدلیں گے**
+- انداز: نرم، پرسکون، دوستانہ اور قابلِ اعتبار — آنکھ کو آرام دینے والا
+- Claymorphism: موٹے گول کونے، سفید ہلکی سرحد، باہر نرم سایہ + اندر ہلکی چمک (inset highlight)
+- پرانی **انڈگو/وایلیٹ (`#4f46e5`, `#7c3aed`, `#9333ea`, `#f4f6fb`)** سکیم **ختم** — اُس کی جگہ یہ نئی پیسٹل سکیم ہے
+- مکمل بصری حوالہ: `palette-preview.html` (ڈبل کلک سے کھول کر دیکھیں)
+
+### رنگ سکیم (Color Palette) — حتمی
 | رنگ | کوڈ | استعمال |
 |-----|-----|---------|
-| Primary | `#4f46e5` | Buttons, links, accents |
-| Secondary | `#7c3aed` | Gradients, hover states |
-| Accent | `#9333ea` | Gradient endpoint |
-| Background | `#f4f6fb` | Main background |
-| Card BG | `#ffffff` | Card backgrounds |
-| Text | `#1f2937` | Main text |
-| Muted | `#6b7280` | Secondary text |
+| Pastel Orange | `#FFDCC0` | بٹنز، ہائی لائٹس، گرمی |
+| Pastel Green | `#D9EFDD` | فیچر کارڈز، success |
+| Pastel Blue | `#D8EAFB` | اطلاعاتی بلاکس، سکون |
+| Pastel Purple (صرف ٹچ) | `#E8E2F7` | بیجز، ٹائم لائن |
+| Pastel Coral / Light Red | `#FFDCD6` | اہم یاد دہانیاں |
+| Butter Yellow (اضافی) | `#FFF0C9` | خوش آمدید، چھوٹے highlights |
+| Soft Mint (اضافی) | `#D6EFEA` | گرین/بلو کے درمیان تازگی |
+| Dusty Rose (اضافی) | `#F5DDE7` | پروفائل / نرم ٹچ |
+| Cream Base | `#FAF8F6` | بیک گراؤنڈ |
+| Muted Ink | `#4F4F5A` | متن (نرم گرے) |
+| Soft Line | `#ECE7E2` | کارڈز کی سرحدیں |
+
+### Claymorphism ترکیب (دوبارہ استعمال کریں)
+- Element: `background: var(--color)` + `border: 2px solid rgba(255,255,255,.78)` + `border-radius: 30px` (بٹنز `999px`)
+- Shadow: `10px 10px 22px rgba(120,110,130,.16)`, `-9px -9px 20px rgba(255,255,255,.95)`,
+  `inset 2px 2px 5px rgba(255,255,255,.70)`, `inset -4px -4px 10px rgba(120,110,130,.07)`
+- Inset فیلڈ: `inset 5px 5px 10px rgba(120,110,130,.13)` + `inset -5px -5px 10px rgba(255,255,255,.95)`
+- بیک گراؤنڈ: Cream Base `#FAF8F6` + بہت ہلکے پیسٹل radial gradients (دکھائی نہ دیں، بس نرمی آئے)
+
+### بٹنز اور اینیمیشن — حتمی
+- **`outline: none`** اور **`-webkit-tap-highlight-color: transparent`** — دبانے پر **نیلی پٹی بالکل نہیں** آئے گی
+- کی بورڈ فوکس صرف `:focus-visible` پر نرم گرے رنگ (`rgba(120,110,130,.35)`) — نیلا نہیں
+- دبانے پر (`:active`): `transform: translateY(5px) scale(.98)` + اندرونی inset سائے → نرم اندرونی دھنساؤ
+- `transition: transform .12s ease, box-shadow .12s ease`
+- ہر بٹن اپنے رنگ کا clay بٹن ہو (orange / green / blue / coral / yellow / mint / rose)
 
 ### فونٹ (Typography)
 - Primary: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
@@ -92,9 +117,9 @@
 - Body: 15-16px
 
 ### Border Radius
-- Cards: 18px
-- Buttons: 30-40px
-- Badges: 12-16px
+- Cards: 30px (claymorphism)
+- Buttons / Badges: 999px (پل / pill)
+- چھوٹے swatch: 24px
 
 ---
 
@@ -110,6 +135,8 @@ alitailor.top/
 ├── DeleteAccount.html  # اکاؤنٹ حذف
 ├── advanced.html       # جدید صفات
 ├── app-ads.txt         # AdMob پبلشر ID (9 ستمبر 2026)
+├── .gitignore          # غیر ضروری فائلز ریپو سے باہر (24 نومبر 2026)
+├── palette-preview.html # ✅ منظور شدہ تھیم کا بصری حوالہ (24 نومبر 2026)
 ├── styles.css          # مشترکہ CSS (نئی)
 ├── icon.png            # فیویکن
 ├── CNAME               # ڈومین
@@ -216,5 +243,32 @@ alitailor.top/
 
 ---
 
-**آخری اپڈیٹ:** 9 ستمبر 2026  
-**_status:** پلان تیار ہے؛ noindex کام مکمل؛ GitHub Pages منتقلی مکمل؛ app-ads.txt شامل؛ سکرین شاٹس مکمل ہونے پر باقی فیز کام شروع ہوگا
+## گفتگو کے نتائج (Discussion Notes) — 24 نومبر 2026
+
+### 1. Ali Tailor ایپ مکمل ✅
+- ایپ کا کام مکمل ہو چکا ہے (ایک ماہ سے زائد محنت کے بعد) اور **Production / Play Store** پر لائیو کر دی گئی ہے
+- اب توجہ **ویب سائٹ** کی طرف ہے — ایک منظم (systematic) انداز میں، مل کر، پہلے بات چیت → پھر فیصلہ → پھر عمل
+
+### 2. ریپو کی صفائی ✅
+- `.gitignore` بنایا گیا اور commit ہوا: `4975c33` — "Add .gitignore to keep repo clean"
+- `alitailor.top.zip` اور بیک اپ/ٹیمپ/OS جھکڑ/ڈیزائن سورسز (.psd/.ai) ریپو سے باہر
+- `.png / .jpg` سکرین شاٹس جان بوجھ کر **ignore نہیں** کیے — وہ ویب سائٹ میں استعمال ہوں گے
+- `PrivacyPolicy.html` میں صارف کی اپنی تبدیلیاں ہیں — **uncommitted، اُسی طرح چھوڑی گئی** (ہاتھ نہیں لگایا)
+
+### 3. تھیم کا پلان مکمل ✅ (حتمی فیصلہ)
+- صارف کو **"Calm & Cozy" + Claymorphism** تھیم چاہیے — ہلکا، نرم، دھندلا (muted) پیسٹل انداز
+- رنگ: ہلکا اورنج، ہلکا گرین، ہلکا بلو، ہلکا پرپل (صرف ٹچ)، ہلکا ریڈ/کورل
+- ایجنٹ کی طرف سے 3 اضافی مماثل رنگ: Butter Yellow `#FFF0C9`, Soft Mint `#D6EFEA`, Dusty Rose `#F5DDE7` — **منظور**
+- **`palette-preview.html`** بنا کر دکھایا گیا — صارف نے کہا: *"یہ بہت خوبصورت ہے، مجھے بہت پسند آیا، بس اسی کو ڈن کریں"*
+- بٹنوں میں نیلی فوکس پٹی ہٹائی گئی (`outline: none`, `-webkit-tap-highlight-color: transparent`)؛ دبانے پر نرم اندرونی دھنساؤ (`translateY(5px) scale(.98)` + inset سائے) — **یہی اثر حتمی ہے**
+- مکمل تفصیل اوپر **"ڈیزائن رہنمائی"** سیکشن میں درج ہے — وہی حوالہ مان لیں
+
+### 4. اگلے مراحل (طے شدہ نہیں — اگلی بات چیت میں)
+- سکرین شاٹس اب بھی فولڈر میں موجود نہیں — ایپ لائیو ہے، اس لیے صارف سے 4–6 اصل سکرین شاٹس مانگنے ہیں
+- "How to Use" کا مقام (الگ صفحہ بمقابلہ ہوم سیکشن)، پہلے عمل کے دائرے اور Play Store لنک کی تصدیق — باقی ہیں
+- Dark mode اور Testimonials ابھی چھوڑے ہوئے ہیں (ریویوز حقیقی ہونے کے بعد)
+
+---
+
+**آخری اپڈیٹ:** 24 نومبر 2026  
+**_status:** تھیم/ڈیزائن پلان **مکمل اور حتمی** (Calm & Cozy + Claymorphism)؛ `.gitignore` مکمل؛ ایپ لائیو؛ اگلا مرحلہ = فاؤنڈیشن (`styles.css` + نیویگیشن + فوٹر) اور سکرین شاٹس — اگلی بات چیت میں طے ہوگا
