@@ -38,6 +38,9 @@ node_modules/
 __pycache__/
 *.pyc
 
+# ── Private working notes (public repo — never publish) ─────────────
+AGENTS.md
+
 # ── SSH keys & credentials (never commit these) ─────────────────────
 .ssh/
 id_rsa
