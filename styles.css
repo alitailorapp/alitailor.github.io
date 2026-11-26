@@ -589,14 +589,30 @@ a.link:hover { text-decoration: underline; }
     }
     .site-nav.is-open { display: flex; }
     .site-nav a { text-align: center; }
+    /* mobile already has the floating download button — avoid a duplicate */
+    .site-nav .nav-download { display: none; }
 }
 
 .site-footer {
-    text-align: center; padding: 20px;
+    text-align: center; padding: 26px 20px;
     font-size: 14px; color: var(--muted);
     background: rgba(255,255,255,.7);
     border-top: 2px solid rgba(255,255,255,.9);
 }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 14px; }
+.footer-links a {
+    padding: 7px 15px;
+    font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none;
+    background: rgba(255,255,255,.7);
+    border: 2px solid rgba(255,255,255,.85);
+    border-radius: 999px;
+    box-shadow: 3px 3px 8px rgba(120,110,130,.12);
+    outline: none; -webkit-tap-highlight-color: transparent;
+    transition: transform .12s ease, box-shadow .12s ease, background .2s ease;
+}
+.footer-links a:hover { background: var(--cream); }
+.footer-links a:active { transform: translateY(3px) scale(.98); box-shadow: inset 3px 3px 7px rgba(120,110,130,.16); }
+.footer-links a:focus-visible { outline: 2px solid rgba(120,110,130,.35); outline-offset: 3px; }
 
 .sticky-cta {
     display: none;
