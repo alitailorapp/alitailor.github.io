@@ -41,6 +41,11 @@ __pycache__/
 # ── Private working notes (public repo — never publish) ─────────────
 AGENTS.md
 
+# ── Local-only design / info files (not needed to host the site) ────
+# Keep these in the project folder for working/reference, but never publish.
+palette-preview.html
+README.md
+
 # ── SSH keys & credentials (never commit these) ─────────────────────
 .ssh/
 id_rsa
