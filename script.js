@@ -190,3 +190,68 @@
     render();
     restart();
 })();
+
+/* ============================================================
+   Site-wide: year, hamburger navigation, active page, back-to-top
+   ============================================================ */
+(function () {
+    'use strict';
+
+    /* footer year on every page */
+    Array.prototype.forEach.call(document.querySelectorAll('.year'), function (el) {
+        el.textContent = new Date().getFullYear();
+    });
+
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('siteNav');
+
+    if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+            var open = nav.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+
+        nav.addEventListener('click', function (event) {
+            if (event.target.tagName === 'A') {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.nav-wrap')) {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        /* highlight the page the visitor is on */
+        var currentFile = decodeURIComponent(window.location.pathname.split('/').pop()) || 'index.html';
+        Array.prototype.forEach.call(nav.querySelectorAll('a'), function (link) {
+            var href = decodeURIComponent(link.getAttribute('href') || '');
+            var target = href.replace(/^https?:\/\/[^/]+\//, '').split('#')[0] || 'index.html';
+            if (target === currentFile) link.classList.add('is-active');
+        });
+    }
+
+    var backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        function onScroll() {
+            if (window.scrollY > 320) backToTop.classList.add('is-visible');
+            else backToTop.classList.remove('is-visible');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+})();
