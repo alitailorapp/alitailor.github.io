@@ -270,5 +270,40 @@ alitailor.top/
 
 ---
 
-**آخری اپڈیٹ:** 24 نومبر 2026  
-**_status:** تھیم/ڈیزائن پلان **مکمل اور حتمی** (Calm & Cozy + Claymorphism)؛ `.gitignore` مکمل؛ ایپ لائیو؛ اگلا مرحلہ = فاؤنڈیشن (`styles.css` + نیویگیشن + فوٹر) اور سکرین شاٹس — اگلی بات چیت میں طے ہوگا
+## گفتگو کے نتائج (Discussion Notes) — 26 نومبر 2026
+
+### 1. قانونی صفحات کی ایپ کے مطابق اصلاح ✅
+- صارف نے ایپ کے اندر موجود Privacy Policy اور Terms & Conditions کے اصل متن (اردو میں) دیے — وہی **ماخذ (source of truth)** ہیں؛ ویب سائٹ **مکمل انگلش** رہے گی
+- `PrivacyPolicy.html`: Last Updated `05/11/2026`, Effective Date `01/08/2026` → `05/11/2026`, سیکشن 10 کی عبارت، سیکشن 12 `Export:` → `Backup:`
+- `Terms&Condition.html`: Effective Date `02/10/2026` → `05/11/2026`، سیکشن 9 سے Android "Contacts" والی اضافی وضاحت ہٹائی
+- **Commit:** `680bd23` — "Align Privacy Policy and Terms with in-app versions"
+
+### 2. Calm & Cozy تھیم تمام صفحات پر لاگو ✅
+- مشترک `styles.css` بنایا گیا؛ تمام 6 HTML صفحات کے اندرونی CSS ہٹائے گئے (`<body class="page-home">` / `page-doc`)
+- پرانی انڈگو/وایلیٹ سکیم HTML سے **مکمل ختم**؛ clay سائے، 30px کارڈز، 999px پل بٹن، **نیلی پٹی نہیں**، نرم press اثر
+- **Commit:** `aa21044` — "Apply Calm and Cozy Claymorphism theme to all pages"
+
+### 3. سیکیورٹی اور Push ✅
+- `.gitignore` میں SSH کیلز/credentials کے patterns شامل (`id_ed25519`, `id_rsa`, `*.ppk`, `*.pem`, `*.key`, `.ssh/`, `known_hosts`, `credentials.json`) — **کوئی کیل ریپو میں نہیں گئی**
+- `origin` اب SSH URL پر: `git@github.com:alitailorapp/alitailor.github.io.git` (صرف `.git/config`، کبھی push نہیں ہوتی)
+- SSH کے ذریعے **push کامیاب** — تمام commits لائیو ہو گئے
+
+### 4. حقیقی ریویوز + Coverflow سلائیڈر ✅
+- صارف نے **8 حقیقی Play Store ریویوز** دیے (سب کا جواب بھی دے چکے ہیں)؛ آٹھویں میں متن نہیں تھا → سلائیڈر میں شامل نہیں
+- **7 ریویوز**، انگلش نام اور اصل متن **بغیر کسی ترمیم** کے، `script.js` میں محفوظ
+- ترتیب: 1. Yasir Amin (5★) · 2. Kharam Khan (5★) · 3. Ali'sME (5★) · 4. Malik SUB (5★) · 5. Mian Waris (5★) · 6. Fazal Hussain (4★) · 7. Imran Khan (5★)
+- جگہ: ہوم پیج پر **"More Information" سیکشن کے بالکل اوپر**
+- ڈیزائن: مرکزی کارڈ بڑا/نمایاں، سائیڈ والے چھوٹے/مدھم، بیک گراؤنڈ میں دھندلی فہرست؛ 5 سیکنڈ auto-rotate، تیر + dots + swipe + keyboard، hover/focus پر رکنا
+- فائلز: `index.html`, `styles.css`, `script.js` — **Commit:** `6e21bb2` — "Add coverflow testimonial slider to home page"
+
+### 5. باقی مراحل (مل کر بعد میں)
+- سکرین شاٹس + `HowToUse.html` (Showcase اور How to Use ایک ہی صفحے پر)
+- انٹرایکٹو `Demo.html` — ہلکا preview، **مکمل ایپ کلون نہیں**
+- FAQ، موبائل sticky ڈاؤن لوڈ بٹن، SEO / Open Graph / JSON-LD
+- ہیمبرگر نیویگیشن اور back-to-top بھی باقی
+- **صارف کی ہدایت:** آگے ہر تبدیلی اسی `AGENTS.md` میں ریکارڈ کی جائے گی
+
+---
+
+**آخری اپڈیٹ:** 26 نومبر 2026  
+**_status:** تھیم، قانونی صفحات کی اصلاح، سیکیورٹی اور ریویو سلائیڈر — سب **مکمل، commit اور push شدہ**؛ ریپو صاف؛ اگلے مراحل (How to Use, Demo, FAQ, SEO) مل کر بعد میں طے ہوں گے
