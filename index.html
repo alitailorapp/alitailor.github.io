@@ -56,6 +56,23 @@
         </div>
     </section>
 
+    <section class="testimonials" aria-label="User reviews">
+        <h2>What Users Say</h2>
+        <p class="section-sub">Real reviews from Google Play Store users.</p>
+
+        <div class="review-stage" id="reviewStage" tabindex="0">
+            <div class="review-bg" aria-hidden="true"></div>
+
+            <button class="review-arrow review-prev" id="reviewPrev" type="button" aria-label="Previous review">&#10094;</button>
+
+            <div class="review-track" id="reviewTrack"></div>
+
+            <button class="review-arrow review-next" id="reviewNext" type="button" aria-label="Next review">&#10095;</button>
+        </div>
+
+        <div class="review-dots" id="reviewDots" aria-label="Choose a review"></div>
+    </section>
+
     <section class="links-section">
         <h2>More Information</h2>
         <div class="links">
@@ -71,6 +88,7 @@
         &copy; <span id="year"></span> Ali Tailor. All rights reserved.
     </footer>
 
+    <script src="script.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
