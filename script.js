@@ -255,3 +255,43 @@
         });
     }
 })();
+
+/* ============================================================
+   Scroll Reveal — repeat: show while in view, hide when it leaves
+   ============================================================ */
+(function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var selector = [
+        '.hero h1', '.hero p', '.hero-points', '.play-badge',
+        '.features h2', '.cards > .card',
+        '.header-banner', '.page-wrap > .card', '.section',
+        '.note-box', '.contact-box', '.info-row', '.faq-item',
+        '.button-group', '.contact-card',
+        '.testimonials h2', '.section-sub', '.review-stage', '.review-dots',
+        '.site-footer'
+    ].join(',');
+
+    var els = Array.prototype.slice.call(document.querySelectorAll(selector));
+    if (!els.length) return;
+
+    document.documentElement.classList.add('has-reveal');
+    els.forEach(function (el, i) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (Math.min(i % 5, 4) * 60) + 'ms';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            entry.target.classList.toggle('is-visible', entry.isIntersecting);
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(function (el) { observer.observe(el); });
+})();
