@@ -62,6 +62,7 @@
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var current = 0;
     var timer = null;
+    var sliderVisible = true;
 
     /* build cards and dots from the review data */
     reviews.forEach(function (review, index) {
@@ -155,7 +156,7 @@
 
     function restart() {
         if (timer) clearInterval(timer);
-        if (!reduceMotion) timer = setInterval(next, 5000);
+        if (!reduceMotion && sliderVisible) timer = setInterval(next, 5000);
     }
 
     if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
@@ -166,6 +167,14 @@
     stage.addEventListener('mouseleave', restart);
     stage.addEventListener('focusin', function () { if (timer) clearInterval(timer); });
     stage.addEventListener('focusout', restart);
+
+    /* don't animate off-screen — a common cause of stutter on mobile */
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            sliderVisible = entries[0].isIntersecting;
+            restart();
+        }, { threshold: 0.2 }).observe(stage);
+    }
 
     stage.addEventListener('keydown', function (event) {
         if (event.key === 'ArrowRight') { event.preventDefault(); next(); restart(); }
