@@ -41,6 +41,9 @@ __pycache__/
 # ── Private working notes (public repo — never publish) ─────────────
 AGENTS.md
 
+# ── Original long-named AI files (short copies s01–s07 are used) ────
+screenshots/Meta_AI_*.jpg
+
 # ── Local-only design / info files (not needed to host the site) ────
 # Keep these in the project folder for working/reference, but never publish.
 palette-preview.html
