@@ -45,7 +45,7 @@ AGENTS.md
 # Keep these in the project folder for working/reference, but never publish.
 palette-preview.html
 README.md
-screenshots/
+screenshots/Meta_AI_*.jpg
 
 # ── SSH keys & credentials (never commit these) ─────────────────────
 .ssh/
